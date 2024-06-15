@@ -27,7 +27,7 @@ body {
     align-items: end;
 }
 
-#calc {
+#display {
     color: white;
     font-size:70px;
     margin:5px;
@@ -52,8 +52,7 @@ body {
     text-align: center;
     vertical-align: middle;
     line-height: 88px;
-    font-size: 35px;
-    
+    font-size: 35px;    
 }
 
 .button.number{
@@ -62,4 +61,8 @@ body {
 
 #equals {
     width:186px;
+}
+
+.button.special {
+    background-color: lightblue;
 }

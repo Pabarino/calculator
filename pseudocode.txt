@@ -1,0 +1,16 @@
+1.Puts first number
+    1.1.Checks that number length is less than maximum
+2.Introduces operator
+    2.1.Saves first number in variable
+    2.2.Saves operator in variable
+    2.3.If operator is reintroduced without second number, what is on screen is saved in variable as second number.
+3.Puts second number 
+    3.1.Checks that number length is less than maximum
+4.Equals
+    4.1.Carries out the operation with first number, operator and second number
+
+Things to look out for
+-If result is larger than maximum length reduce it to 8 digits and *10^whatever, making sure the maximum length is always kept
+-Disable decimal point if it has already been introduced
+-Inverse button changes plus sign to negative sign
+-Percentage button divides by 100
