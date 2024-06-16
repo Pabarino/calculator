@@ -5,58 +5,36 @@ const operators = ["+","-","*","/"];
 let opCount = false;
 let lastOp;
 
+function numberFormatting(num) {
+    let formattedAns = num.toFixed(10);
+    // Remove trailing zeros after decimal point and handle integer part separately 
+    //(this part was revealed to me in a dream *cough*ChatGPT*cough*)
+    let finalAns = formattedAns.replace(/(\.\d*?[1-9])0+$|\.0*$/, "$1");;
+    
+    if (finalAns.length>12) {
+        if (num<10) {
+            console.log("trailing");
+            return finalAns.slice(0,12);;
+        } else {
+            return "Num too big"
+        }        
+    }
+    return finalAns;
+}
+
 function add (a,b) {
     let ans = parseFloat(a)+parseFloat(b);
-    let strAns = String(ans).length;
-
-    if (String(ans).includes('e')) {
-        ans=ans.toFixed("10");
-        return String(ans).slice(0,12);
-    }  
-    if (strAns>12) {
-        if (ans<1) {
-            return String(ans).slice(0,12);
-        }
-        return "Num too big"
-    }
-    
-    return String(ans);
+    return numberFormatting(ans);
 }
 
 function subtract (a,b) {
     let ans = parseFloat(a)-parseFloat(b);
-    let strAns = String(ans).length;
-
-    if (String(ans).includes('e')) {
-        ans=ans.toFixed("10");
-        return String(ans).slice(0,12);
-    }  
-    if (strAns>12) {
-        if (ans<1) {
-            return String(ans).slice(0,12);
-        }
-        return "Num too big"
-    }
-
-    return String(ans);
+    return numberFormatting(ans);
 }
 
 function multiply (a,b) {
     let ans = parseFloat(a)*parseFloat(b);
-    let strAns = String(ans).length;
-
-    if (String(ans).includes('e')) {
-        ans=ans.toFixed("10");
-        return String(ans).slice(0,12);
-    }  
-    if (strAns>12) {
-        if (ans<1) {
-            return String(ans).slice(0,12);
-        }
-        return "Num too big"
-    }
-
-    return String(ans);
+    return numberFormatting(ans);
 }
 
 function divide (a,b) {
@@ -64,20 +42,7 @@ function divide (a,b) {
         return "Arghhhhhhhhh";
     }
     let ans = parseFloat(a)/parseFloat(b);
-    let strAns = String(ans).length;
-
-    if (String(ans).includes('e')) {
-        ans=ans.toFixed("10");
-        return String(ans).slice(0,12);
-    }  
-    if (strAns>12) {
-        if (ans<1) {
-            return String(ans).slice(0,12);
-        }
-        return "Num too big"
-    }
-
-    return String(ans);
+    return numberFormatting(ans)
 }
 
 function operate (first, op, second) {
@@ -111,7 +76,6 @@ buttons.forEach((button) =>{
         }
         //Checks everything related to the operators
         else if (operators.some((operator) => btn.includes(operator))) {
-            console.log(button.textContent);
             firstNumber = display.textContent;
             lastOp = btn;            
             if (opCount){
